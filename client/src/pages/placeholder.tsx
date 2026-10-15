@@ -1,0 +1,1 @@
+export function Placeholder({title}:{title:string}){return <main className="panel"><h1>{title}</h1><p>This routed module is reserved for the next production slice. Core group chat, access control, uploads, and real-time updates are ready.</p></main>}

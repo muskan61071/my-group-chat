@@ -1,0 +1,1 @@
+import type { ButtonHTMLAttributes, PropsWithChildren } from 'react'; export function Button({children,className='',...p}:PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>>){return <button className={`button ${className}`} {...p}>{children}</button>}

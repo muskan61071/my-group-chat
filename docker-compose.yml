@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  hivetalk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hivetalk-chat:latest
+    container_name: hivetalk-app
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - NODE_ENV=production
+    volumes:
+      - hivetalk_uploads:/app/uploads
+
+volumes:
+  hivetalk_uploads:

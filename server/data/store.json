@@ -1,0 +1,230 @@
+{
+  "groups": {
+    "grp_frontend_guild": {
+      "id": "grp_frontend_guild",
+      "name": "💻 Frontend & UI Guild",
+      "description": "Frontend architectural discussions, React component design, and UI styling.",
+      "imageURL": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=150&auto=format&fit=crop&q=80",
+      "visibility": "public",
+      "ownerId": "usr_admin",
+      "memberIds": [
+        "usr_admin",
+        "usr_maya"
+      ],
+      "memberCount": 2,
+      "createdAt": 1791784399856,
+      "updatedAt": 1791827599856,
+      "lastMessageAt": 1791827599856,
+      "lastMessagePreview": "All components styled with warm brown tokens!",
+      "activeInviteCode": "REACT2026",
+      "settings": {
+        "membersCanPost": true,
+        "membersCanInvite": true,
+        "disappearingDuration": 0,
+        "allowVoiceNotes": true,
+        "allowMediaSharing": true
+      }
+    },
+    "grp_mv5einf4_ttwf": {
+      "id": "grp_mv5einf4_ttwf",
+      "name": "General Chat",
+      "description": "Welcome to our general discussion room",
+      "visibility": "private",
+      "ownerId": "usr_ZGVtb0BoaXZl",
+      "memberIds": [
+        "usr_ZGVtb0BoaXZl"
+      ],
+      "memberCount": 1,
+      "createdAt": 1791818578192,
+      "updatedAt": 1791818751308,
+      "activeInviteCode": "QZ6ZSZLZBJA7",
+      "settings": {
+        "membersCanPost": true,
+        "membersCanInvite": true,
+        "disappearingDuration": 0,
+        "allowVoiceNotes": true,
+        "allowMediaSharing": true
+      },
+      "lastMessageAt": 1791818751308,
+      "lastMessagePreview": "🎤 Voice message"
+    },
+    "grp_mv5g9l6t_33r9": {
+      "id": "grp_mv5g9l6t_33r9",
+      "name": "frds",
+      "description": "",
+      "visibility": "private",
+      "ownerId": "usr_ZGVtb0BoaXZl",
+      "memberIds": [
+        "usr_ZGVtb0BoaXZl"
+      ],
+      "memberCount": 1,
+      "createdAt": 1791821514629,
+      "updatedAt": 1791821522274,
+      "activeInviteCode": "25H4NPEPQWQZ",
+      "settings": {
+        "membersCanPost": true,
+        "membersCanInvite": true,
+        "disappearingDuration": 0,
+        "allowVoiceNotes": true,
+        "allowMediaSharing": true
+      },
+      "lastMessageAt": 1791821522274,
+      "lastMessagePreview": "hii"
+    }
+  },
+  "members": {
+    "grp_frontend_guild": {
+      "usr_admin": {
+        "userId": "usr_admin",
+        "displayName": "Alex Admin",
+        "role": "admin",
+        "joinedAt": 1791784399856
+      },
+      "usr_maya": {
+        "userId": "usr_maya",
+        "displayName": "Maya Moderator",
+        "role": "moderator",
+        "joinedAt": 1791787599856
+      }
+    },
+    "grp_mv5einf4_ttwf": {
+      "usr_ZGVtb0BoaXZl": {
+        "userId": "usr_ZGVtb0BoaXZl",
+        "displayName": "demo",
+        "photoURL": "https://api.dicebear.com/7.x/initials/svg?seed=demo%40chat.local&backgroundColor=8B5E3C,6F472B",
+        "role": "admin",
+        "joinedAt": 1791818578192,
+        "lastReadAt": 1791818578192
+      }
+    },
+    "grp_mv5g9l6t_33r9": {
+      "usr_ZGVtb0BoaXZl": {
+        "userId": "usr_ZGVtb0BoaXZl",
+        "displayName": "demo",
+        "photoURL": "https://api.dicebear.com/7.x/initials/svg?seed=demo%40chat.local&backgroundColor=8B5E3C,6F472B",
+        "role": "admin",
+        "joinedAt": 1791821514629,
+        "lastReadAt": 1791821514629
+      }
+    }
+  },
+  "invites": {
+    "REACT2026": {
+      "code": "REACT2026",
+      "groupId": "grp_frontend_guild",
+      "createdBy": "usr_admin",
+      "createdAt": 1791784399856,
+      "expiresAt": 1794419599856,
+      "maxUses": 500,
+      "usesCount": 2
+    },
+    "QZ6ZSZLZBJA7": {
+      "groupId": "grp_mv5einf4_ttwf",
+      "createdBy": "usr_ZGVtb0BoaXZl",
+      "createdAt": 1791818578227
+    },
+    "25H4NPEPQWQZ": {
+      "groupId": "grp_mv5g9l6t_33r9",
+      "createdBy": "usr_ZGVtb0BoaXZl",
+      "createdAt": 1791821515384
+    }
+  },
+  "messages": {
+    "grp_frontend_guild": [
+      {
+        "id": "msg_fe_1",
+        "groupId": "grp_frontend_guild",
+        "senderId": "usr_admin",
+        "senderName": "Alex Admin",
+        "kind": "text",
+        "text": "All components styled with warm brown tokens!",
+        "reactions": {
+          "🔥": [
+            "usr_maya"
+          ]
+        },
+        "createdAt": 1791826399856
+      }
+    ],
+    "grp_mv5einf4_ttwf": [
+      {
+        "id": "msg_1791818686083_ayfsy",
+        "groupId": "grp_mv5einf4_ttwf",
+        "senderId": "usr_ZGVtb0BoaXZl",
+        "senderName": "demo",
+        "senderPhotoURL": "https://api.dicebear.com/7.x/initials/svg?seed=demo%40chat.local&backgroundColor=8B5E3C,6F472B",
+        "kind": "text",
+        "text": "hi",
+        "attachment": null,
+        "location": null,
+        "contact": null,
+        "payment": null,
+        "replyTo": null,
+        "reactions": {},
+        "isPinned": false,
+        "isStarred": false,
+        "expiresAt": null,
+        "status": "sent",
+        "createdAt": 1791818686083
+      },
+      {
+        "id": "msg_1791818751308_006a0",
+        "groupId": "grp_mv5einf4_ttwf",
+        "senderId": "usr_ZGVtb0BoaXZl",
+        "senderName": "demo",
+        "senderPhotoURL": "https://api.dicebear.com/7.x/initials/svg?seed=demo%40chat.local&backgroundColor=8B5E3C,6F472B",
+        "kind": "audio",
+        "text": null,
+        "attachment": {
+          "url": "/uploads/file-1791818751296-379629012.webm",
+          "name": "voice-note-1791818751278.webm",
+          "size": 2200,
+          "kind": "video",
+          "mimeType": "audio/webm",
+          "groupId": "grp_mv5einf4_ttwf",
+          "createdAt": 1791818751302,
+          "duration": 8
+        },
+        "location": null,
+        "contact": null,
+        "payment": null,
+        "replyTo": null,
+        "reactions": {},
+        "isPinned": false,
+        "isStarred": false,
+        "expiresAt": null,
+        "status": "sent",
+        "createdAt": 1791818751308
+      }
+    ],
+    "grp_mv5g9l6t_33r9": [
+      {
+        "id": "msg_1791821522274_t8lae",
+        "groupId": "grp_mv5g9l6t_33r9",
+        "senderId": "usr_ZGVtb0BoaXZl",
+        "senderName": "demo",
+        "senderPhotoURL": "https://api.dicebear.com/7.x/initials/svg?seed=demo%40chat.local&backgroundColor=8B5E3C,6F472B",
+        "kind": "text",
+        "text": "hii",
+        "attachment": null,
+        "location": null,
+        "contact": null,
+        "payment": null,
+        "replyTo": null,
+        "reactions": {},
+        "isPinned": false,
+        "isStarred": false,
+        "expiresAt": null,
+        "status": "sent",
+        "createdAt": 1791821522274
+      }
+    ]
+  },
+  "systemBranding": {
+    "appName": "stargurl",
+    "appIcon": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2224%22%20fill%3D%22%23CA8A04%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2266%22%20font-size%3D%2252%22%20text-anchor%3D%22middle%22%20font-family%3D%22sans-serif%22%3E%E2%AD%90%3C%2Ftext%3E%3C%2Fsvg%3E",
+    "appTagline": "Private group conversations, beautifully organized.",
+    "theme": "warm-brown",
+    "updatedAt": 1792032058380
+  }
+}

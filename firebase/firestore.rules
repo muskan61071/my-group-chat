@@ -1,0 +1,114 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Authentication helpers
+    function signedIn() { 
+      return request.auth != null; 
+    }
+    
+    // Group membership & role helpers
+    function member(groupId) {
+      return signedIn() && exists(/databases/$(database)/documents/groups/$(groupId)/members/$(request.auth.uid));
+    }
+    
+    function memberDoc(groupId) {
+      return get(/databases/$(database)/documents/groups/$(groupId)/members/$(request.auth.uid)).data;
+    }
+    
+    function isAdmin(groupId) {
+      return member(groupId) && memberDoc(groupId).role == 'admin';
+    }
+    
+    function isModerator(groupId) {
+      return member(groupId) && (memberDoc(groupId).role == 'moderator' || memberDoc(groupId).role == 'admin');
+    }
+
+    // User profile documents
+    match /users/{userId} {
+      allow read: if signedIn();
+      allow create, update: if signedIn() && request.auth.uid == userId;
+    }
+
+    // Groups & subcollections
+    match /groups/{groupId} {
+      allow read: if signedIn() && (resource.data.visibility == 'public' || member(groupId));
+      allow create: if signedIn();
+      allow update: if isModerator(groupId);
+      allow delete: if isAdmin(groupId);
+
+      // Members subcollection
+      match /members/{memberId} {
+        allow read: if member(groupId);
+        allow create: if signedIn();
+        // Admins can update roles/status; members can update their own non-role fields (e.g., mute, presence)
+        allow update: if isAdmin(groupId) || (signedIn() && request.auth.uid == memberId && request.resource.data.role == resource.data.role);
+        // Self-leave or admin kick
+        allow delete: if isAdmin(groupId) || (signedIn() && request.auth.uid == memberId);
+      }
+
+      // Group Messages subcollection
+      match /messages/{messageId} {
+        allow read: if member(groupId);
+        allow create: if member(groupId) && request.resource.data.senderId == request.auth.uid;
+        // Edit own message, or add/remove reactions (any member), or moderator pin/moderate
+        allow update: if member(groupId) && (
+          (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['reactions'])) ||
+          (resource.data.senderId == request.auth.uid && request.resource.data.senderId == request.auth.uid) ||
+          isModerator(groupId)
+        );
+        allow delete: if member(groupId) && (resource.data.senderId == request.auth.uid || isModerator(groupId));
+      }
+
+      // Group Announcements subcollection
+      match /announcements/{id} {
+        allow read: if member(groupId);
+        allow create: if isModerator(groupId);
+        allow update, delete: if isModerator(groupId);
+
+        // Announcement Comments
+        match /comments/{commentId} {
+          allow read: if member(groupId);
+          allow create: if member(groupId) && request.resource.data.userId == request.auth.uid;
+          allow update: if member(groupId) && resource.data.userId == request.auth.uid;
+          allow delete: if member(groupId) && (resource.data.userId == request.auth.uid || isModerator(groupId));
+        }
+      }
+
+      // Group Notifications
+      match /notifications/{id} {
+        allow read, write: if member(groupId);
+      }
+    }
+
+    // Group Invites
+    match /invites/{id} {
+      allow read: if signedIn();
+      allow create: if signedIn() && member(request.resource.data.groupId);
+      allow update, delete: if signedIn() && isModerator(resource.data.groupId);
+    }
+
+    // Active Calls (WebRTC signaling)
+    match /calls/{callId} {
+      allow read: if signedIn();
+      allow create: if signedIn() && member(request.resource.data.groupId);
+      allow update, delete: if signedIn() && (
+        resource.data.hostId == request.auth.uid || 
+        isModerator(resource.data.groupId)
+      );
+    }
+
+    // Payments & Contributions
+    match /payments/{paymentId} {
+      allow read: if signedIn() && (
+        resource.data.senderId == request.auth.uid || 
+        resource.data.receiverId == request.auth.uid || 
+        isAdmin(resource.data.groupId)
+      );
+      allow create: if signedIn() && request.resource.data.senderId == request.auth.uid && member(request.resource.data.groupId);
+      allow update: if signedIn() && (
+        resource.data.senderId == request.auth.uid || 
+        resource.data.receiverId == request.auth.uid
+      );
+    }
+  }
+}
